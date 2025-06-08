@@ -1,0 +1,8 @@
+numpy
+shapely
+radon
+ruff
+pytest
+pytest-cov
+pandas
+pyyaml 
