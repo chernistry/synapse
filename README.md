@@ -2,8 +2,9 @@
 
 This repository contains the research paper and the experimental prototype for the **SYNAPSE (Synthetic-data Native Adaptive Process for Software Engineering)** framework.
 
-[![arXiv](https://img.shields.io/badge/arXiv-24XX.XXXXX-b31b1b.svg)](https://arxiv.org/abs/24XX.XXXXX)
+[![Kaggle](https://img.shields.io/badge/Kaggle-Notebook-20beff?logo=kaggle)](https://www.kaggle.com/code/sashachernysh/synapse)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 ## 1. Overview
 
@@ -12,7 +13,7 @@ SYNAPSE is a novel framework for software development that employs an autonomous
 The core innovation is **adaptive governance**: the agent moves beyond simple code generation to strategically manage trade-offs between performance, security, and maintainability, guided by high-level project goals.
 
 This repository includes:
-*   `research/`: The full research paper (`paper_draft.md`) and supporting materials.
+*   `paper.md`: The full research paper.
 *   `synapse_experiment/`: A Python-based simulation to validate the framework's core hypotheses.
 
 ## 2. Conceptual Architecture
@@ -48,7 +49,6 @@ The experiment compares two agents:
 
 **Prerequisites:**
 *   Python 3.11+
-*   Poetry (for dependency management)
 
 **Setup:**
 
@@ -58,16 +58,22 @@ The experiment compares two agents:
     cd synapse/synapse_experiment
     ```
 
-2.  **Install dependencies:**
+2.  **Create and activate a virtual environment:**
     ```bash
-    poetry install
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
+
+3.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
     ```
 
 **Execution:**
 
 1.  **Run the main experiment script:**
     ```bash
-    poetry run python main.py
+    python main.py
     ```
 
 2.  **View the results:**
