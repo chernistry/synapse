@@ -1,0 +1,12 @@
+numpy
+shapely
+radon
+ruff
+pytest
+pytest-cov
+pandas
+pyyaml
+requests
+pydantic
+
+# analysis notebook extras (optional): matplotlib seaborn jupyter

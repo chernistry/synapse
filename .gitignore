@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local tooling / editors
+.idea/
+.vscode/
+.DS_Store
+
+# Private working dirs (not part of the preserved prototype)
+.dev/
+.arch/
+.prompts/
+
+# stray
+root/.trigger
+root/synapse_experiment/.old_results/

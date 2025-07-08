@@ -1,0 +1,39 @@
+# SYNAPSE Experiment Configuration
+
+# --- Experiment Parameters ---
+num_scenarios: 100 # Total number of scenarios to generate
+random_seed: 42    # For reproducibility
+
+# --- Scenario Generation ---
+# Parameters for generating random scenarios. Will be used to create N scenarios.
+scenario_generation:
+  dimensions:
+    min: 50
+    max: 100
+  num_obstacles:
+    min: 5
+    max: 40
+  obstacle_size:
+    min: 3
+    max: 15
+  # 60% training, 20% validation, 20% holdout (edge-cases)
+  split:
+    training: 0.6
+    validation: 0.2
+    holdout: 0.2
+
+# --- Evaluation Weights ---
+# Weights for the final Product Performance Score (PPS) calculation.
+# These represent the "product owner's" final desired outcome.
+final_pps_weights:
+  time: 0.20
+  energy: 0.10
+  safety: 0.50
+  payload_integrity: 0.20
+
+# --- Strategic Risk Score (SRS) Weights ---
+# Weights for the components of the SRS.
+srs_weights:
+  code_complexity: 0.4
+  test_coverage: 0.4
+  regression_potential: 0.2 

@@ -1,0 +1,349 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-font: 'Source Sans 3', sans-serif;
+    --serif-font: 'Lora', serif;
+    --text-color: #333;
+    --bg-color: #fdfdfd;
+    --accent-color: #007acc;
+    --border-color: #ddd;
+    --code-bg: #f5f5f5;
+    --max-width: 800px;
+    --toc-width: 240px;
+}
+
+body {
+    font-family: var(--serif-font);
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+/* --- Layout --- */
+body {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    max-width: var(--max-width);
+    padding: 2rem 1.5rem;
+    width: 100%;
+}
+
+#toc-container {
+    width: var(--toc-width);
+    padding: 2rem 1rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+    font-family: var(--primary-font);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+}
+
+h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p, ul, ol {
+    margin-bottom: 1.2rem;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+strong {
+    font-weight: 600;
+}
+
+/* --- Table of Contents --- */
+#toc-container h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+#toc {
+    display: flex;
+    flex-direction: column;
+}
+
+#toc a {
+    color: #555;
+    font-family: var(--primary-font);
+    padding: 0.4em 0;
+    font-size: 0.9rem;
+    border-left: 2px solid transparent;
+    padding-left: 1em;
+}
+
+#toc a:hover {
+    background-color: #f0f0f0;
+    border-left-color: var(--accent-color);
+}
+
+#toc a.h3 {
+    padding-left: 2em;
+    font-size: 0.85rem;
+}
+
+
+/* --- Code & Math --- */
+pre {
+    background: var(--code-bg);
+    padding: 1.5em;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+code {
+    font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+    font-size: 0.9rem;
+}
+
+p > code, li > code {
+    background-color: var(--code-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5em 0;
+}
+
+/* --- Tables --- */
+.table-container {
+    overflow-x: auto;
+    margin: 2em 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--primary-font);
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 0.8em 1em;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+.large-table {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* --- Misc Elements --- */
+.mermaid {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.caption {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin-top: -1em;
+}
+
+.chart-container {
+    margin: 3em 0;
+    padding: 1.5em;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+    body {
+        flex-direction: column;
+    }
+    #toc-container {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem;
+    }
+    #toc {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #toc a {
+        padding: 0.5em 1em;
+    }
+    #toc a.h3 {
+        padding-left: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    main {
+        padding: 1rem;
+    }
+    h1 {
+        font-size: 2.2rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- Print Styles --- */
+@media print {
+  body {
+    background: #fff !important;
+    color: #222 !important;
+    font-size: 14pt !important;
+    display: block !important;
+    margin: 0;
+    padding: 0;
+  }
+  #toc-container, aside, nav, .chartjs-size-monitor, script, .hljs-ln-numbers {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+  }
+  main {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  a {
+    color: #555 !important;
+    text-decoration: underline dotted #888 !important;
+    pointer-events: none !important;
+  }
+  table, pre, code, .katex-display {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    background: #f5f5f5 !important;
+    color: #222 !important;
+    border: 1px solid #bbb !important;
+  }
+  .table-container, .chart-container {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    background: none !important;
+    border: 1px solid #bbb !important;
+    margin-bottom: 1em !important;
+    padding: 0.7em !important;
+  }
+  h1 {
+    color: #222 !important;
+    background: none !important;
+    border-color: #bbb !important;
+    page-break-before: always !important;
+    page-break-after: avoid !important;
+    margin-top: 1em !important;
+    margin-bottom: 0.7em !important;
+  }
+  h2 {
+    color: #222 !important;
+    background: none !important;
+    border-color: #bbb !important;
+    page-break-before: auto !important;
+    page-break-after: avoid !important;
+    margin-top: 1em !important;
+    margin-bottom: 0.5em !important;
+  }
+  h3, h4 {
+    color: #222 !important;
+    background: none !important;
+    border-color: #bbb !important;
+    page-break-after: avoid !important;
+    margin-top: 0.7em !important;
+    margin-bottom: 0.4em !important;
+  }
+  .caption {
+    color: #666 !important;
+    margin-top: 0.2em !important;
+    margin-bottom: 0.7em !important;
+  }
+  pre, code {
+    background: #f5f5f5 !important;
+    color: #222 !important;
+    border: 1px solid #bbb !important;
+  }
+  img, table, .mermaid img, .chart-container img {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0.7em auto !important;
+  }
+  section {
+    page-break-after: avoid !important;
+    margin-bottom: 1em !important;
+    padding-bottom: 0 !important;
+    border-bottom: none !important;
+  }
+  p, ul, ol {
+    margin-bottom: 0.7em !important;
+  }
+  #author-info {
+    color: #888 !important;
+    font-size: 0.95em !important;
+    font-style: italic !important;
+    margin-bottom: 0.7em !important;
+  }
+}
