@@ -2,8 +2,9 @@
 
 *Alex Chernysh — 2026-04-25*
 
-> A preface added to the original paper nine months after it was written.
-> The original text below this preface is unchanged.
+> A retrospective written nine months after the original paper. The unchanged
+> 2025 paper is served at <https://chernistry.github.io/synapse/>; `root/paper.md`
+> is a 2026 copy-edited reading version of the same text.
 
 ---
 
@@ -21,10 +22,11 @@ solid to build that loop on.
 
 ## What aged well
 
-- **Deterministic control plane, not LLM-driven scheduling.** The paper insisted
-  the orchestration layer should be transparent and rule-based, not another
-  LLM call. Nine months later this turned out to be the single most important
-  call in the design. Bernstein's scheduler is plain Python — zero tokens spent
+- **Deterministic control plane, not LLM-driven scheduling.** The paper kept
+  the scoring and selection machinery formal and explainable — MCDM methods a
+  human can audit, not a bare LLM judgment — with the LLM confined to one
+  layer. Nine months later that separation turned out to be the single most
+  important call in the design. Bernstein's scheduler is plain Python — zero tokens spent
   on coordination, full audit trail, no nondeterminism in the control flow.
 
 - **Adaptive metric selection beats fixed metrics.** The Synapse pathfinding
@@ -53,13 +55,24 @@ solid to build that loop on.
   MCP in late 2025 and matured through early 2026. Without it, Synapse's
   feedback loop was a closed simulation talking to itself.
 
-- **N=1 is not a benchmark.** The repo's only real result file
+- **N=1 is not a benchmark.** The repo's only reproducible result file
   (`results/experiment_results_20250708_225100.csv`) is two rows: StaticAgent
   vs SYNAPSEAgent on one scenario (S1\_DynamicWind), 170.28 vs 122.32 energy,
   3.97 vs 1.24 safety, 59.71 vs 61.50 time. The paper says so itself in the
   Limitations section, but it bears repeating: this is a single data point,
-  not evidence. The 10,000-scenario claim in v1.1 was a planning artefact, not
-  a reproducible run.
+  not evidence. That result also carries a known confound — a list-aliasing
+  bug in the post-solve path analysis — so read it as a smoke test, not a
+  measurement.
+
+- **The paper's §5 tables are not reproducible here.** Section 5 and Appendix A
+  present a 100-scenario run (training / validation / holdout, per-scenario PPS
+  and SRS tables) and the rendered site charts twenty holdout rows. That data
+  came from an earlier grid-world implementation whose raw CSVs were not
+  preserved; only the continuous S1\_DynamicWind run above survives in the repo.
+  So the numbers in §5 are the historical artefact, and the two-row CSV is the
+  only thing you can re-run. The 10,000-scenario claim floated in a v1.1 draft
+  was a planning artefact, never computed. The prose in the 2025 paper oversells
+  throughout — read the numbers, not the adjectives.
 
 ## What this became
 
@@ -72,12 +85,14 @@ solid to build that loop on.
   I first trusted that the loop survived contact with file systems.
 
 - **Bernstein** — <https://bernstein.run>. Production multi-agent orchestrator;
-  10K+ PyPI installs/month, 31 adapters, MCP and A2A support, deterministic
-  Python scheduling, git-worktree isolation per task, HMAC-signed audit trail,
-  janitor verification step. What Kotef was for one agent, Bernstein is for
-  many. The "control plane that doesn't burn tokens on its own scheduling" is
-  exactly the Synapse intuition, shipped. MCDM-style trade-off scoring lives
-  in the agent / model routing logic.
+  40+ adapters, Apache-2.0, on PyPI, external contributors. MCP and A2A
+  support, deterministic Python scheduling, git-worktree isolation per task,
+  HMAC-signed audit trail, janitor verification step — and, by mid-2026,
+  deterministic replay with hash-mismatch detection and verification-gated
+  merges. What Kotef was for one agent, Bernstein is for many. The "control
+  plane that doesn't burn tokens on its own scheduling" is exactly the Synapse
+  intuition, shipped. MCDM-style trade-off scoring lives in the agent / model
+  routing logic.
 
 - **Personal `CLAUDE.md` / coding rules.** Still names "MCDM7" and "Adaptive
   Governance" by their Synapse names. The vocabulary stuck because the lens is
